@@ -1,0 +1,59 @@
+nav#sidebar.sidebar.sidebar-offcanvas
+    ul.nav
+        li.nav-item
+            a.nav-link(href='/dashboard')
+                i.far.fa-chart-bar
+                span.menu-title Dashboard
+                span.badge.badge-warning.ml-1 Soon
+        li.nav-item
+            a.nav-link.collapsed(data-toggle='collapse', href='#ui-basic', aria-expanded='false', aria-controls='ui-basic')
+                i.far.fa-edit
+                span.menu-title Constructor
+                span.badge.badge-warning.ml-1 Soon
+                i.menu-arrow
+            #ui-basic.collapse
+                ul.nav.flex-column.sub-menu
+                    li.nav-item
+                        a.nav-link(href='/constructor/components') HTML Components
+                            span.badge.badge-warning.ml-1 Soon
+                    li.nav-item
+                        a.nav-link(href='/constructor/scripts') Script
+                            span.badge.badge-warning.ml-1 Soon
+        li.nav-item
+            a.nav-link(href='/projects')
+                i.fas.fa-sitemap
+                span.menu-title Projects
+                span.badge.badge-warning.ml-1 Soon
+        li.nav-item
+            a.nav-link(href='/tasks')
+                i.fas.fa-tasks
+                span.menu-title Tasks
+                span.badge.badge-warning.ml-1 Soon
+        li.nav-item
+            a.nav-link(href='../../pages/tables/basic-table.html')
+                i.menu-icon.mdi.mdi-table
+                span.menu-title Tables
+                span.badge.badge-info.ml-1 Template
+        li.nav-item
+            a.nav-link(href='../../pages/icons/font-awesome.html')
+                i.menu-icon.mdi.mdi-sticker
+                span.menu-title Icons
+                span.badge.badge-info.ml-1 Template
+        li.nav-item
+            a.nav-link(data-toggle='collapse', href='#auth', aria-expanded='false', aria-controls='auth')
+                i.menu-icon.mdi.mdi-restart
+                span.menu-title User Pages
+                span.badge.badge-info.ml-1 Template
+                i.menu-arrow
+            #auth.collapse
+                ul.nav.flex-column.sub-menu
+                    li.nav-item
+                        a.nav-link(href='../../pages/samples/blank-page.html')  Blank Page
+                    li.nav-item
+                        a.nav-link(href='../../pages/samples/login.html')  Login
+                    li.nav-item
+                        a.nav-link(href='../../pages/samples/register.html')  Register
+                    li.nav-item
+                        a.nav-link(href='../../pages/samples/error-404.html')  404
+                    li.nav-item
+                        a.nav-link(href='../../pages/samples/error-500.html')  500

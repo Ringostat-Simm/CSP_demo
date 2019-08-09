@@ -1,0 +1,49 @@
+nav.navbar.default-layout.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row
+    .text-center.navbar-brand-wrapper.d-flex.align-items-top.justify-content-center
+        a.navbar-brand.brand-logo(href='/')
+            img(src='/images/logo_full.png', alt='logo')
+            | CSPlatform
+        a.navbar-brand.brand-logo-mini(href='/')
+            img(src='/images/logo_full.png', alt='logo')
+    .navbar-menu-wrapper.d-flex.align-items-center
+        ul.navbar-nav.navbar-nav-left.header-links.d-none.d-md-flex
+            li.nav-item.dropdown
+                a#reportsDropdown.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-expanded='true')
+                    i.fas.fa-chart-line
+                    | Reports
+                    span.badge.badge-warning.ml-1 Soon
+                .dropdown-menu.dropdown-menu-right.navbar-dropdown(aria-labelledby='reportsDropdown')
+                    a.dropdown-item
+                        i.fas.fa-dollar-sign
+                        | Sales Department
+                    a.dropdown-item
+                        i.fas.fa-euro-sign
+                        | Partnership Department
+                    a.dropdown-item
+                        i.fas.fa-hand-holding-usd
+                        | Outbound Sales
+                    a.dropdown-item
+                        i.far.fa-life-ring
+                        | Support Department
+                    a.dropdown-item
+                        i.far.fa-thumbs-up
+                        | Success Department
+            li.nav-item
+                a.nav-link(href='/docs')
+                    i.fab.fa-wikipedia-w
+                    | Documentation
+                    span.badge.badge-warning.ml-1 Soon
+        ul.navbar-nav.navbar-nav-right
+            li.nav-item
+                a.nav-link
+                    i.fas.fa-users
+                    | Users
+                    span.badge.badge-warning.ml-1 Soon
+            li.nav-item
+                a.nav-link(href='/users/profile')
+                    i.far.fa-id-badge
+                    | Profile
+            li.nav-item
+                a.nav-link(href='/users/logout')
+                    i.fas.fa-sign-out-alt
+                    | Logout

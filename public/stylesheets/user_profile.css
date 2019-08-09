@@ -1,0 +1,24 @@
+.main-panel{
+    width: 100%!important;
+}
+
+.save_profile-btn {
+    min-width: 250px;
+    margin-top: 15px;
+}
+.spinner-btn .btn-text{
+    position: relative;
+    vertical-align: middle;
+}
+.save_profile[disabled] {
+    cursor: no-drop;
+}
+.save_profile.spinner-btn{
+    display:none;
+}
+.save_profile-btn .spinner-border {
+    width: 20px!important;
+    height: 20px!important;
+    border: .2em solid currentColor;
+    border-right-color: transparent;
+}

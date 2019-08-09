@@ -1,0 +1,97 @@
+html, body, h1, h2, h3, h4, h5, h6, p, em, strong, abbr, acronym, blockquote, q, cite, ins, del, dfn, a, div, span, pre, hr, address, br, b, i, sub, sup, big, small, tt, table, tr, caption, thead, tbody, tfoot, col, colgroup, form, input, label, textarea, button, fieldset, legend, select, option, ul, ol, li, dl, dt, dd, code, var, samp, img, object, param, map, area, bdo, iframe {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.page-body-wrapper:not(.auth-page) {
+    min-height: calc(100vh - 70px);
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.page-body-wrapper:not(.auth-page) {
+    padding-top: 70px;
+}
+
+.page-body-wrapper.full-page-wrapper {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.main-panel {
+    transition: width 0.25s ease, margin 0.25s ease;
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+@media (max-width: 991px) {
+    .main-panel {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+.content-wrapper {
+    background: #f2f8f9;
+    width: 100%;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+}
+
+.container-scroller {
+    overflow: hidden;
+}
+
+.scroll-container {
+    position: relative;
+}
+
+.scroll-container.horizontally {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+.scroll-container.vertically {
+    overflow-y: hidden;
+    height: 100%;
+    max-height: 100%;
+}
+
+pre {
+    padding: 15px;
+    font-size: 14px;
+}
+/* Buttons */
+
+.btn{
+    font-size: 14px;
+    margin: 5px;
+}
+.btn-outline-success{
+    color: #28a745!important;
+}
+.btn-outline-success:hover{
+    color: #ffffff!important;
+}
+.btn-rounded{
+    border-radius: 50px;
+}
+
+/* toastr */
+.toast-info{
+    background-color: #308ee0!important;
+}
+.toast-success{
+    background-color: #00ce68!important;
+}
+.toast-error{
+    background-color: #e13130!important;
+}

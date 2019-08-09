@@ -1,0 +1,53 @@
+extends ../layout
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/login.css')
+block content
+    .content-wrapper.d-flex.align-items-center.auth.auth-bg-1.theme-one
+        .row.w-100
+            .col-lg-4.mx-auto
+                .auto-form-wrapper
+                    .form-group.text-center
+                        a.nav-link(href='/')
+                            img.auth-form-logo(src='/images/logo_full.png')
+                            h2.text-primary CSPlatform
+                    form(method='post', action='/users/login')
+                        .form-group
+                            //label.label Имя пользователя или email:
+                            .input-group
+                                input.form-control(type='text', name='username', placeholder='Имя пользователя или email')
+                                .input-group-append
+                                    span.input-group-text
+                                        i.far.fa-user
+                        .form-group
+                            //label.label Пароль:
+                            .input-group
+                                input.form-control(type='password', name='password', placeholder='Пароль')
+                                .input-group-append
+                                    span.input-group-text
+                                        i.fas.fa-lock
+                        .form-group.text-center
+                            button.btn.btn-outline-primary.submit-btn.btn-rounded.login-btn(type='submit')
+                                i.fas.fa-sign-in-alt
+                                =' '
+                                | Войти
+                            button.btn.btn-primary.submit-btn.btn-rounded.login-btn.spinner-btn(type='submit', disabled='disabled')
+                                span.btn-text
+                                    i.fas.fa-sign-in-alt
+                                    =' '
+                                    | Войти
+                                .spinner-border.float-right(role='status')
+                        .text-block.text-center.my-3
+                            a.text-small.forgot-password.text-black(href='/') Вернуться на главную
+                            = ' | '
+                            a.text-small.forgot-password.text-black(href='#') Забыл пароль
+                p.footer-text.text-muted.d-flex.justify-content-center.align-items-center
+                    = `Copyright © ${new Date().getFullYear()}`
+                    a.nav-link(href='mailto:k.peschanov@ringostat.com') Konstantin Peschanov
+                    | All rights reserved.
+block scripts
+    script.
+        $('.login-btn').on('click', function(){
+            $(this).attr('style', 'display:none;');
+            $('.login-btn.spinner-btn').attr('style', 'display:inline-block!important');
+        })

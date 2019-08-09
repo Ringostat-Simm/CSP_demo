@@ -1,0 +1,48 @@
+extends ../layout
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/landing.css')
+block content
+    .page-body-wrapper
+        include partials/header_landing
+        .main-panel
+                .content-wrapper.d-flex.align-items-top
+                    .row.w-100
+                        .col-lg-7.mx-auto
+                            h2.text-center Ringostat это
+                            ul#pills-tab.nav.nav-pills.mb-3(role='tablist')
+                                li.nav-item
+                                    a#pills-home-tab.btn.btn-outline-primary.btn-rounded.active.show(data-toggle='pill', href='#pills-home', role='tab', aria-controls='pills-home', aria-selected='true') Call Tracking
+                                li.nav-item
+                                    a#pills-profile-tab.btn.btn-outline-primary.btn-rounded(data-toggle='pill', href='#pills-profile', role='tab', aria-controls='pills-profile', aria-selected='false') Виртуальная АТС
+                                li.nav-item
+                                    a#pills-contact-tab.btn.btn-outline-primary.btn-rounded(data-toggle='pill', href='#pills-contact', role='tab', aria-controls='pills-contact', aria-selected='false') Callback
+                            #pills-tabContent.tab-content
+                                #pills-home.tab-pane.fade.active.show(role='tabpanel', aria-labelledby='pills-home-tab')
+                                    .row
+                                        .col-6
+                                            p.slide__title Аналитика звонков покажет, какая реклама работает
+                                            p.slide__text
+                                                | Коллтрекинг — это технология определения источников звонков. Взаимодействуя с системами веб-аналитики, собирает информацию об обращениях по телефону. Система заменяет номер и показывает посетителю сайта подменный. После звонка call tracking сопоставляет подменный номер и то, с какого канала рекламы пришел клиент. В итоге вы получаете детальную информацию о звонках и их рекламных источниках.
+                                        .col-6
+                                            p.slide__img
+                                                img(src='https://ringostat.ua/uploads/media/default/0001/01/fd73a800f9bd57033c634cf84410b1b8375ab556.png', alt='')
+                                #pills-profile.tab-pane.fade(role='tabpanel', aria-labelledby='pills-profile-tab')
+                                    .row
+                                        .col-6
+                                            p.slide__title Офисная телефония с минимальными затратами
+                                            p.slide__text
+                                                | Виртуальная АТС — инструмент построения бизнес-телефонии за 1 день. Без затрат на дорогостоящее оборудование и наличия специальных знаний. Настройте звуки приветствия, умные сценарии распределения звонков с учетом рабочего времени, многоуровневое голосовое меню. Получите контроль над бизнесом: прослушивайте записи разговоров, оценивайте эффективность сотрудников, снижайте количество пропущенных звонков.
+                                        .col-6
+                                            p.slide__img
+                                                img(src='https://ringostat.ua/uploads/media/default/0001/01/36c37da6056c08723b48c1012a5e6d0d6b9c073d.png', alt='')
+                                #pills-contact.tab-pane.fade(role='tabpanel', aria-labelledby='pills-contact-tab')
+                                    .row
+                                        .col-6
+                                            p.slide__title Еще больше заявок с сайта
+                                            p.slide__text
+                                                | Знаете, сколько посетителей уходит с сайта, так и не позвонив? Бесплатный виджет callback или форма обратного звонка превратит их в клиентов. Это элемент сайта, с помощью которого можно заказать звонок. Потенциальный клиент оставляет свой номер, и ему в течение 27 секунд перезванивает менеджер. Опыт пользователей компании доказывает, что благодаря callback количество заявок увеличивается минимум на 30%.
+                                        .col-6
+                                            p.slide__img
+                                                img(src='https://ringostat.ua/uploads/media/default/0001/01/6ce37e22031125aa851c1f6de7054580ee3c4798.png', alt='')
+        include partials/footer_landing

@@ -1,0 +1,29 @@
+.container-fluid{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.content-wrapper{
+    height: 100vh;
+}
+/* Error */
+.error-page h1 {
+    font-size: 8.375rem;
+    line-height: 1;
+    padding-right: 100px;
+}
+@media (max-width: 991px) {
+    .error-page h1 {
+        font-size: 8rem;
+        padding-right: 0px;
+    }
+}
+.error-page h2 {
+    font-size: 3.375rem;
+    line-height: 1;
+}
+
+@media (min-width: 992px) {
+    .error-page .error-page-divider {
+        border-left: 3px solid rgba(255, 255, 255, 0.2);
+    }
+}

@@ -1,0 +1,149 @@
+extends ../layout
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/index.css')
+block content
+    .container-scroller
+        include partials/index_header
+        .container-fluid.page-body-wrapper
+            .main-panel
+                .content-wrapper
+                    .row
+                        .col-6
+                            .card
+                                .card-header Генератор паролей
+                                .card-body
+                                    .alert.alert-info.text-center(role='alert') Выберите нужное количество паролей
+                                    .input-group
+                                        select.form-control.pass-quant
+                                            - for (let i = 1; i < 21; i++)
+                                                option(value=`${i}`)= i
+                                    h5(style='margin: 15px 25px;') Результат:
+                                    .result-container(style='margin: 0px 25px;')
+                        .col-6
+                            .col-6.d-flex.flex-column(style='float:right')
+                                .alarm-clock(style='margin-bottom:10px')
+                                    .time
+                                        span.hours
+                                        span.colon :
+                                        span.minutes
+                                        span.colon :
+                                        span.seconds
+                                #openweathermap-widget
+
+
+
+
+block scripts
+    script.
+        var current = location.pathname.split("/").slice(-1)[0].replace(/^\/|\/$/g, '');
+        $('.nav li a.nav-link').each(function () {
+            var $this = $(this);
+            if (current === "") {
+                //for root url
+                if ($this.attr('href').indexOf("index.html") !== -1) {
+                    $(this).parents('.nav-item').last().addClass('active');
+                    if ($(this).parents('.sub-menu').length) {
+                        $(this).closest('.collapse').addClass('show');
+                        $(this).addClass('active');
+                    }
+                }
+            } else {
+                //for other url
+                if ($this.attr('href').indexOf(current) !== -1) {
+                    $(this).parents('.nav-item').last().addClass('active');
+                    if ($(this).parents('.sub-menu').length) {
+                        $(this).closest('.collapse').addClass('show');
+                        $(this).addClass('active');
+                    }
+                }
+            }
+        })
+    if user.city === 'Черкассы'
+        script.
+            window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
+            window.myWidgetParam.push({
+                id: 5,
+                cityid: '710791',
+                appid: 'b7986d552610d8651dd85ce939fd754f',
+                units: 'metric',
+                containerid: 'openweathermap-widget'
+            })
+    else
+        script.
+            window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
+            window.myWidgetParam.push({
+                id: 5,
+                cityid: '698740',
+                appid: 'b7986d552610d8651dd85ce939fd754f',
+                units: 'metric',
+                containerid: 'openweathermap-widget'
+            })
+    script.
+        (function () {
+            var script = document.createElement('script');
+            script.async = true;
+            script.charset = "utf-8";
+            script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(script, s);
+        })();
+    script.
+        (function () {
+            const hours = document.querySelector('.hours');
+            const minutes = document.querySelector('.minutes');
+            const seconds = document.querySelector('.seconds');
+
+            function startClock() {
+                const now = new Date();
+                const secs = (now.getSeconds() > 9) ? now.getSeconds() : '0' + now.getSeconds();
+                const mins = (now.getMinutes() > 9) ? now.getMinutes() : '0' + now.getMinutes();
+                const hrs = (now.getHours() > 9) ? now.getHours() : '0' + now.getHours();
+
+                hours.innerHTML = hrs;
+                seconds.innerHTML = secs;
+                minutes.innerHTML = mins;
+            }
+
+            setInterval(startClock, 500);
+        })();
+    <!-- Скрипт для нескольких паролей -->
+    script.
+        let resultContainer = document.querySelector('.result-container');
+        let quantContainer = document.querySelector('.pass-quant');
+        function generatePass() {
+            let length = 14,
+                charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+                password = "$1P";
+            for (let i = 0, n = charset.length; i < length; ++i) {
+                password += charset.charAt(Math.floor(Math.random() * n));
+            }
+            return password;
+        };
+        function createElement() {
+            let val = this.value ? this.value : 1;
+            let i = 1;
+            while (resultContainer.firstChild) {
+                resultContainer.removeChild(resultContainer.firstChild)
+            }
+
+            while (i <= val) {
+                let createElement = document.createElement('div');
+                createElement.classList.add('input-group', 'input-group-sm', 'mb-3');
+                createElement.innerHTML += `<label for="#result-field-${i}" style="margin: .25rem;">Пароль ${i}:</label><br><input class="form-control" type="text" id="#result-field-${i}" placeholder="generated password" aria-label="generated password" value="${generatePass()}" readonly=""><div class="input-group-append" style="margin-top: -5px;margin-left: -5px;"><button class="btn btn-success copy-btn" type="button" data-target="result-field-${i}"><i class="fas fa-copy" style="margin-right: unset;"></i></button></div>`;
+                resultContainer.append(createElement);
+                i++
+            }
+        }
+        document.addEventListener('DOMContentLoaded', createElement);
+        quantContainer.addEventListener('change', createElement);
+        resultContainer.addEventListener('DOMSubtreeModified', function () {
+            let btn = document.querySelectorAll('.copy-btn')
+            for (let i = 0; i < btn.length; i++) {
+                btn[i].addEventListener('click', function (target) {
+                    target = document.getElementById('#' + this.getAttribute('data-target'));
+                    target.select();
+                    document.execCommand('copy');
+                })
+            }
+        })

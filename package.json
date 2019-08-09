@@ -1,0 +1,65 @@
+{
+  "name": "csplatform",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "axios": "^0.18.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "btoa": "^1.2.1",
+    "cheerio": "^1.0.0-rc.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "express-session": "^1.15.6",
+    "express-toastr": "^2.0.2",
+    "express-xml-bodyparser": "^0.3.0",
+    "intercom-client": "^2.10.5",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.4.11",
+    "morgan": "^1.9.1",
+    "nodemailer": "^5.1.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "pug": "^2.0.3",
+    "request": "^2.88.0",
+    "sqlite3": "^4.0.8",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  },
+  "description": "Customer Support Platform",
+  "main": "./bin/www",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Ringostat-Simm/CSPlatform.git"
+  },
+  "engines": {
+    "node": ">=0.7",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "keywords": [
+    "CSPlatform",
+    "Customer",
+    "Support",
+    "Platform"
+  ],
+  "author": "Konstantin Peschanov (k.peschanov@ringostat.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ringostat-Simm/CSPlatform/issues"
+  },
+  "homepage": "https://github.com/Ringostat-Simm/CSPlatform#readme"
+}

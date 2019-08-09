@@ -1,0 +1,113 @@
+extends ../layout
+
+block scripts
+    script.
+        function showSpinnerButton() {
+            $('.btn.btn-outline-success.submit-btn.btn-rounded.save_profile-btn').attr('style', 'display:none;');
+            $('.spinner-btn').attr('style', 'display:inline-block!important');
+        };
+        function hideSpinnerButton() {
+            $('.spinner-btn').attr('style', 'display:none;');
+            $('.btn.btn-outline-success.submit-btn.btn-rounded.save_profile-btn').attr('style', 'display:inline-block!important');
+        };
+
+        $('.save_profile-btn').on('click', function () {
+            showSpinnerButton();
+            let userName = document.querySelector('input[name="firstname"]').value,
+                userSurname = document.querySelector('input[name="lastname"]').value,
+                userCity = document.querySelector('option[selected]').value;
+            $.ajax({
+                url: `/users/profile/update/#{user._id}/#{user.token}`,
+                type: "POST",
+                data: {
+                    'username': userName,
+                    'usersurname': userSurname,
+                    'usercity': userCity
+                },
+
+                success: function(response){
+                    toastr.success(response.result)
+                    hideSpinnerButton();
+                },
+                error: function (error) {
+                    toastr.error(error.error);
+                    hideSpinnerButton();
+                }
+            });
+        });
+        $('.user-city').on('change', function(event){
+            let selectedValue = event.target.value;
+
+            if (selectedValue === 'Черкассы') {
+                $(this).find('option[selected]').removeAttr('selected');
+                $(this).find('option[value="Черкассы"]').attr('selected', 'selected');
+            }
+            if (selectedValue === 'Одесса') {
+                $(this).find('option[selected]').removeAttr('selected');
+                $(this).find('option[value="Одесса"]').attr('selected', 'selected');
+            }
+
+        });
+block styles
+    link(rel='stylesheet', href='/stylesheets/index.css')
+    link(rel='stylesheet', href='/stylesheets/user_profile.css')
+block content
+    .container-scroller
+        include ../index/partials/index_header
+        .container-fluid.page-body-wrapper
+            .main-panel
+                .content-wrapper
+                    .row
+                        .col-6(style='margin:auto;')
+                            .card
+                                .card-body
+                                    h4.card-title Персональная информация
+                                    p.card-description
+                                        | Пользователь #{user.firstname + ' ' + user.lastname}
+                                    .row
+                                        .col-md-6
+                                            .form-group.row
+                                                label.col-sm-3.col-form-label Имя:
+                                                .col-sm-9
+                                                    input.form-control(type='text', name='firstname', placeholder='Имя', value=`${user.firstname}` ? `${user.firstname}` : '')
+                                        .col-md-6
+                                            .form-group.row
+                                                label.col-sm-3.col-form-label Фамилия:
+                                                .col-sm-9
+                                                    input.form-controlinput.form-control(type='text', name='lastname', placeholder='Фамилия', value=`${user.lastname}` ? `${user.lastname}` : '')
+                                    .row
+                                        .col-md-6
+                                            .form-group.row
+                                                label.col-sm-3.col-form-label Логин:
+                                                .col-sm-9
+                                                    input.form-control(value=`${user.username}`, readonly)
+                                        .col-md-6
+                                            .form-group.row
+                                                label.col-sm-3.col-form-label Офис:
+                                                .col-sm-9
+                                                    select.form-control.user-city
+                                                        if (user.city === 'Черкассы' || !user.city)
+                                                            option(value='Черкассы', selected) Черкассы
+                                                            option(value="Одесса") Одесса
+                                                        else
+                                                            option(value='Черкассы') Черкассы
+                                                            option(value="Одесса", selected) Одесса
+                                    .row
+                                        .col-md-12
+                                            .form-group.row
+                                                label.col-sm-2.col-form-label API-ключ:
+                                                .col-sm-10
+                                                    input.form-control(value=`${user.token}`, readonly)
+
+                                    .row(style="border-top:1px solid #ced4da;padding:15px;display: flex;justify-content: flex-end;")
+                                        .form-group.text-right
+                                            button.btn.btn-outline-success.submit-btn.btn-rounded.save_profile-btn
+                                                i.fas.fa-sign-in-alt
+                                                =' '
+                                                | Сохранить
+                                            button.btn.btn-success.submit-btn.btn-rounded.save_profile-btn.spinner-btn(disabled='disabled', style='display:none')
+                                                span.btn-text
+                                                    i.fas.fa-sign-in-alt
+                                                    =' '
+                                                    | Сохранить
+                                                .spinner-border.float-right(role='status')

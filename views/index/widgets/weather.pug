@@ -1,0 +1,38 @@
+.row
+    .col-lg-6.grid-margin.stretch-card
+        // weather card
+        #openweathermap-widget-ck
+        script.
+            window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({
+                id: 5,
+                cityid: '710791',
+                appid: 'b7986d552610d8651dd85ce939fd754f',
+                units: 'metric',
+                containerid: 'openweathermap-widget-ck'
+            });  (function () {
+                var script = document.createElement('script');
+                script.async = true;
+                script.charset = "utf-8";
+                script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(script, s);
+            })();
+        #openweathermap-widget-od
+        script.
+            window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({
+                id: 5,
+                cityid: '698740',
+                appid: 'b7986d552610d8651dd85ce939fd754f',
+                units: 'metric',
+                containerid: 'openweathermap-widget-od',
+            });  (function () {
+                var script = document.createElement('script');
+                script.async = true;
+                script.charset = "utf-8";
+                script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(script, s);
+            })();
+
+
+

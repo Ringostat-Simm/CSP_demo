@@ -1,0 +1,27 @@
+header.header-wrapper
+    nav.navbar.default-layout.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row
+        .text-center.navbar-brand-wrapper.d-flex.align-items-top.justify-content-center
+            a.navbar-brand.brand-logo(href='/')
+                img(src='/images/logo_full.png', alt='logo')
+                | CSPlatform
+            a.navbar-brand.brand-logo-mini(href='/')
+                img(src='/images/logo_full.png', alt='logo')
+        .navbar-menu-wrapper.d-flex.align-items-center
+            ul.navbar-nav.navbar-nav-left.header-links.d-none.d-md-flex
+                li.nav-item(style='margin: 5px;')
+                    a.nav-link.phone-link(href='tel:0672230967')
+                        i.fas.fa-mobile-alt
+                        |  (067) 223 09 67
+                li.nav-item
+                    a.nav-link.email-link(href='mailto:k.peschanov@ringostat.com')
+                        i.fas.fa-envelope-open
+                        | Konstantin Peschanov
+            ul.navbar-nav.navbar-nav-right
+                li.nav-item
+                    a.nav-link(onclick='ringostatAPI.openCallbackForm()')
+                        i.fas.fa-phone-volume
+                        | Заказать звонок
+                li.nav-item
+                    a.nav-link(href='/users/login')
+                        i.fas.fa-sign-in-alt
+                        | Войти
