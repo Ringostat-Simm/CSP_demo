@@ -21,7 +21,7 @@
     "express-xml-bodyparser": "^0.3.0",
     "intercom-client": "^2.10.5",
     "lodash": "^4.17.11",
-    "mongoose": "^5.4.11",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "nodemailer": "^5.1.1",
     "passport": "^0.4.0",
